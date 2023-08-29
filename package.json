@@ -1,0 +1,34 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.17.1",
+    "@nuxt/typescript-build": "^3.0.1",
+    "@nuxtjs/tailwindcss": "^6.7.0",
+    "@types/node": "^18",
+    "nuxt": "^3.5.2",
+    "nuxt-calendly": "^0.1.14",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@heroicons/vue": "^2.0.18",
+    "@nuxt/typescript-runtime": "^3.0.1",
+    "@popperjs/core": "^2.11.8",
+    "@vuepic/vue-datepicker": "^5.4.0",
+    "animate.css": "^4.1.1",
+    "ant-design-vue": "^4.0.0",
+    "dayjs": "^1.11.9",
+    "flowbite": "^1.6.5",
+    "flowbite-datepicker": "^1.2.2",
+    "v-calendar": "^3.0.3",
+    "vue-google-charts": "^1.1.0",
+    "vue3-carousel": "^0.3.1"
+  }
+}
