@@ -1,14 +1,18 @@
 <template>
   <div class="w-11/12 mx-auto mt-5">
     <div class="chart-container">
+      <h5 class="md:text-2xl font-bold text-lg mb-2">{{ timelineData?.Qualyval?.name }}:</h5>
       <GChart :data="dataWithAnnotations" :options="options" :type="type" :settings="settings" />
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, h } from "vue";
+import { defineComponent } from "vue";
 import { GChart } from "vue-google-charts";
+import timelineData from "../../timelineData.json"; 
+console.log(timelineData.Qualyval.name)
+
 
 const columns = [
   { type: "string", id: "President" },
@@ -17,29 +21,25 @@ const columns = [
   { type: "string", role: "annotation" },
 ];
 
-const rows = [
-  ["Washington", new Date(2020, 8, 10), new Date(2021, 11, 10), "Project 1"],
-  ["Adams & kasem", new Date(2021, 1, 1), new Date(2021, 8, 10), "Project 2"],
-  ["Jefferson", new Date(2021, 8, 1), new Date(2021, 11, 10), "Project 3"],
-  ["Asif & Rofik", new Date(2021, 3, 30), new Date(2022, 4, 4), "Project 4"],
-  ["John & Suvojit", new Date(2022, 2, 4), new Date(2022, 5, 4), "Project 5"],
-  ["Hasib, Rahul & Wami", new Date(2022, 2, 4), new Date(2022, 7, 4), "Project 6"],
-  ["Sehab", new Date(2021, 5, 15), new Date(2021, 8, 20), "Project 7"],
-  ["Fahim & Mubin", new Date(2022, 3, 10), new Date(2022, 6, 25), "Project 8"],
-  ["Abdullah", new Date(2021, 8, 1), new Date(2021, 11, 10), "Project 9"],
-  ["Melbura", new Date(2023, 1, 15), new Date(2023, 4, 5), "Project 10"],
-  ["Nenson", new Date(2022, 5, 10), new Date(2022, 8, 20), "Project 11"],
-  ["Rohan", new Date(2021, 0, 15), new Date(2021, 3, 30), "Project 12"],
-  ["Galib", new Date(2022, 7, 15), new Date(2022, 10, 25), "Project 13"]
-];
-
 export default defineComponent({
   name: "GoogleChart",
   components: {
     GChart,
   },
+  data() {
+    return {
+      timelineData
+    };
+  },
   setup() {
     const type = "Timeline";
+    const rows = timelineData.Qualyval.datas.map(row => [
+      row[0],
+      new Date(row[1]),
+      new Date(row[2]),
+      row[3]
+    ]);
+
     const dataWithAnnotations = [columns, ...rows];
     const options = {
       // Set responsive width and height
